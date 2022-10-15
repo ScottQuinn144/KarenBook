@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% for profile in profiles %}
+
+<div class="container text-center mt-4 underline">
+    <div class="row">
+        <div class="col">
+
+        </div>
+        <div class="col">
+            <div class="card text-center bg-light">
+                <a href="{% url 'profile' profile.id %}">
+                    <div class="card-body">
+                        <h5 class="card-title text-dark text-decoration-underline">{{ profile.user.username }}</h5>
+                        <p class="card-text text-muted">@{{ profile.user.username|lower }}</p>
+                    </div>
+                </a>
+            </div>
+               
+        </div>
+        <div class="col">
+
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+{% endblock %}
