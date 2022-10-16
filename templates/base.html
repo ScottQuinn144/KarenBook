@@ -23,7 +23,9 @@
           </section>
         </div>
         <div class="col">
+          {% if user.is_authenticated %}
           <a class="btn btn-success" href="{% url 'account_logout' %}" role="button">Sign Out</a>
+          {% endif %}
         </div>
       </div>
     </div>
