@@ -1,8 +1,13 @@
 from django.shortcuts import render
 from .models import Profile
 
+
 def dashboard(request):
-    return render(request, "base.html")
+    return render(request, "dashboard.html")
+
+
+def index(request):
+    return render(request, "index.html")
 
 
 def profile_list(request):
