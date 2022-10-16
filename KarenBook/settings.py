@@ -55,7 +55,7 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
-LOGIN_REDIRECT_URL = '{% url "dashboard" %}'
+LOGIN_REDIRECT_URL = "dashboard"
 LOGOUT_REDIRECT_URL = '/'
 
 MIDDLEWARE = [
