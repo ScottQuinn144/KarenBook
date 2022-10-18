@@ -79,15 +79,16 @@
 
             <div class="card bg-white bg-opacity-75 mt-2 text-center float-end" style="width: 100%;">
                 <div class="card-body">
-                    <h5 class="card-title">{{ user.username }}</h5>
-                    {% for posts in profile.user.posts.all %}
 
-                    <p class="card-text">{{ posts.body }}</p>
-                    <figcaption class="blockquote-footer">
-                        ({{ posts.created_at }})
-                    </figcaption>
-                    <a href="#" class="card-link btn btn-primary">Like</a>
-                    {% endfor %}
+                    {% for posts in profile.user.posts.all %}
+                    <h5 class="card-title mt-2 text-decoration-underline">{{profile.user.username }}</h5>
+                    <div class="card-body">
+                        <p class="card-text">{{ posts.body }}</p>
+                        <figcaption class="blockquote-footer">
+                            ({{ posts.created_at }})
+                        </figcaption>
+                        <a href="#" class="card-link btn btn-primary">Like</a>
+                        {% endfor %}
                 </div>
             </div>
 

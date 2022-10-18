@@ -14,15 +14,20 @@
             <div class="card text-center bg-white bg-opacity-75 mt-2 text-center">
                 {% for followed in user.profile.follows.all %}
                 {% for posts in followed.user.posts.all %}
-                <h5 class="card-title mt-2 text-decoration-underline">{{ user.username }}</h5>
-                <div class="card-body">
-                    <p class="card-text">{{ posts.body }}</p>
-                    <figcaption class="blockquote-footer">
-                        ({{ posts.created_at }})
-                    </figcaption>
-                    <a href="#" class="card-link btn btn-primary">Like</a>
+                    <h5 class="card-title text-decoration-underline border-top p-3">{{ posts.user.username }}</h5>
+                    <div class="card-body">
+                        <p class="card-text">{{ posts.body }}</p>
+                        <figcaption class="blockquote-footer">
+                            ({{ posts.created_at }})
+                        </figcaption>
+                        <a href="#" class="card-link btn btn-primary mb-3">Like</a>
+                        <div class="bg-success bg-opacity-25">
+                            <br>
+                        </div>
+                    
                     {% endfor %}
                     {% endfor %}
+
                 </div>
             </div>
             <div class="col">
