@@ -3,32 +3,32 @@
 {% block content %}
 
 <div class="container text-center mt-4">
-    <div class="row">
+    <div class="row border-bottom mb-3">
         <div class="col">
 
         </div>
         <div class="col">
             <div class="block">
-                <h1 class="title is-1">
+                <h1 class="title is-1 mb-3">
                     {{profile.user.username}}
                 </h1>
             </div>
         </div>
         <div class="col">
-            <form method="post">
+            <form method="post" class="mb-3">
                 {% csrf_token %}
                 <div>
-                {% if profile in user.profile.follows.all %}
+                    {% if profile in user.profile.follows.all %}
                     <button class="btn btn-success m-2" disabled>Follow</button>
                     <button class="btn btn-danger" name="follow" value="unfollow">
                         Unfollow
                     </button>
-                {% else %}
+                    {% else %}
                     <button class="btn btn-success m-2" name="follow" value="follow">
                         Follow
                     </button>
                     <button class="btn btn-danger disabled">Unfollow</button>
-                {% endif %}
+                    {% endif %}
                 </div>
             </form>
         </div>
@@ -40,7 +40,7 @@
 
 <div class="container text-center mt-4">
     <div class="row">
-        <div class="col-2">
+        <div class="col-5">
             <div class="block">
                 <h3 class="text-muted text-decoration-none">
                     {{profile.user.username}} follows:
@@ -57,12 +57,11 @@
                     </ul>
                 </div>
             </div>
-
-            <div class="block">
-                <h3 class="text-muted text-decoration-none">
+            <div class="col" style="width: 100%;">
+                <h3 class="text-muted text-decoration-none" style="width: 100%;">
                     {{profile.user.username}} is followed by:
                 </h3>
-                <div class="content">
+                <div>
                     <ul class="list-group m-2">
                         {% for follower in profile.followed_by.all %}
                         <li class="list-group-item bg-success bg-opacity-25 mb-1">
@@ -75,31 +74,47 @@
                 </div>
             </div>
         </div>
-        <div class="col-10 border border-dark">
-            SPACE FOR POSTS
-        </div>
-    </div>
 
-    <footer class="border-top border-muted">
+        <div class="col">
 
-        <div class="container text-center mt-4">
-            <div class="row">
-                <div class="col">
+            <div class="card bg-white bg-opacity-75 mt-2 text-center float-end" style="width: 100%;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ user.username }}</h5>
+                    {% for posts in profile.user.posts.all %}
 
-                </div>
-                <div class="col">
-                    <div class="block">
-                        <div class="">
-                            <a href="{%url 'profile_list'%}">
-                                <button type="button" class="btn btn-secondary">All Profiles</button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-
+                    <p class="card-text">{{ posts.body }}</p>
+                    <figcaption class="blockquote-footer">
+                        ({{ posts.created_at }})
+                    </figcaption>
+                    <a href="#" class="card-link btn btn-primary">Like</a>
+                    {% endfor %}
                 </div>
             </div>
+
         </div>
-    </footer>
-    {% endblock content %}
+    </div>
+</div>
+
+<footer class="border-top border-muted">
+
+    <div class="container text-center mt-4">
+        <div class="row">
+            <div class="col">
+
+            </div>
+            <div class="col">
+                <div class="block">
+                    <div class="">
+                        <a href="{%url 'profile_list'%}">
+                            <button type="button" class="btn btn-secondary">All Profiles</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock content %}
