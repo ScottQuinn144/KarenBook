@@ -39,4 +39,5 @@ def profile(request, pk):
         elif action == "unfollow":
             current_user_profile.follows.remove(profile)
         current_user_profile.save()
+
     return render(request, "socials/profile.html", {"profile": profile})
