@@ -7,28 +7,49 @@
     <p>welcome {{ user.username }}</p>
 </div>
 
-
-<div class="container text-center">
+<div class="container text-center border-bottom">
     <div class="row">
-        <div class="col" style="width: 100%;">
+        <div class="col">
+
+        </div>
+        <div class="col">
+            <div class="text-center align-center" style="height: 100%;" style="width: 100%;">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="btn btn-secondary mb-3" type="submit">Post
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="col">
+
+        </div>
+    </div>
+</div>
+
+<div class="container text-center mt-3">
+    <div class="row">
+        <div class="col" style="width: 100%;" style="height: 100%;">
             <div class="card text-center bg-white bg-opacity-75 mt-2 text-center">
                 {% for followed in user.profile.follows.all %}
                 {% for posts in followed.user.posts.all %}
-                    <h5 class="card-title text-decoration-underline border-top p-3">{{ posts.user.username }}</h5>
-                    <div class="card-body">
-                        <p class="card-text">{{ posts.body }}</p>
-                        <figcaption class="blockquote-footer">
-                            ({{ posts.created_at }})
-                        </figcaption>
-                        <a href="#" class="card-link btn btn-primary mb-3">Like</a>
-                        <div class="bg-success bg-opacity-25">
-                            <br>
-                        </div>
-                    
-                    {% endfor %}
-                    {% endfor %}
-
+                <h5 class="card-title text-decoration-underline border-top p-3">{{ posts.user.username }}</h5>
+                <div class="card-body" style="width: 100%;">
+                    <p class="card-text">{{ posts.body }}</p>
+                    <figcaption class="blockquote-footer" style="width: 100%;">
+                        ({{ posts.created_at }})
+                    </figcaption>
+                    <a href="#" class="card-link btn btn-primary mb-3">Like</a>
                 </div>
+                <div class="bg-success bg-opacity-25" style="width: 100%;">
+                    <br>
+                </div>
+                {% endfor %}
+                {% endfor %}
+
+
+
             </div>
             <div class="col">
 

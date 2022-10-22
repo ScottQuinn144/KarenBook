@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import dashboard, profile_list, profile, index
 
+
 urlpatterns = [
     path('', index, name='home'),
     path("dashboard/", dashboard, name="dashboard"),

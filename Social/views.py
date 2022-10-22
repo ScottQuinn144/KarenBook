@@ -1,9 +1,18 @@
 from django.shortcuts import render
-from .models import Profile
+from .models import Profile, Posts
+from .forms import PostForm
+from django.shortcuts import render, redirect
 
 
 def dashboard(request):
-    return render(request, "dashboard.html")
+    form = PostForm(request.POST or None)
+    if request.method == "POST":
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = request.user
+            post.save()
+            return redirect("dashboard")
+    return render(request, "dashboard.html", {"form": form})
 
 
 def index(request):

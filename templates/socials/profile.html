@@ -2,19 +2,10 @@
 
 {% block content %}
 
-<div class="container text-center mt-4">
-    <div class="row border-bottom mb-3">
-        <div class="col">
-
-        </div>
-        <div class="col">
-            <div class="block">
-                <h1 class="title is-1 mb-3">
-                    {{profile.user.username}}
-                </h1>
-            </div>
-        </div>
-        <div class="col">
+<div class="col-12 text-center mt-4">
+    <div class="row">
+        <h1 class="title is-1 mb-3">
+            {{profile.user.username}}
             <form method="post" class="mb-3">
                 {% csrf_token %}
                 <div>
@@ -31,32 +22,56 @@
                     {% endif %}
                 </div>
             </form>
-        </div>
+        </h1>
     </div>
-
 </div>
-</div>
-
 
 <div class="container text-center mt-4">
-    <div class="row">
-        <div class="col-5">
-            <div class="block">
-                <h3 class="text-muted text-decoration-none">
-                    {{profile.user.username}} follows:
-                </h3>
-                <div class="text-center mb-2 border-bottom border-success">
-                    <ul class="list-group m-2">
-                        {% for following in profile.follows.all %}
-                        <li class="list-group-item bg-success bg-opacity-25 mb-1">
-                            <a class="text-decoration-none text-success" href="{% url 'profile' following.id %}">
-                                {{ following }}
-                            </a>
-                        </li>
-                        {% endfor %}
-                    </ul>
+    <div class="col">
+
+    </div>
+
+    <div class="col">
+
+        <div class="card bg-white bg-opacity-75 mt-2 text-center float-end" style="width: 100%;">
+            <div class="card-body">
+                {% for posts in profile.user.posts.all %}
+                <h5 class="card-title mt-2 text-decoration-underline">{{profile.user.username }}</h5>
+                <div class="card-body">
+                    <p class="card-text">{{ posts.body }}</p>
+                    <figcaption class="blockquote-footer">
+                        ({{ posts.created_at }})
+                    </figcaption>
+                    <a href="#" class="card-link btn btn-primary">Like</a>
                 </div>
+                <div class="bg-success bg-opacity-25" style="width: 100%;">
+                    <br>
+                </div>
+                {% endfor %}
+
             </div>
+        </div>
+        <div class="container text-center"></div>
+        <div class="col">
+
+        </div>
+
+        <div class="border-top bg-secondary bg-opacity-50 pt-4">
+            <h3 class="text-muted text-decoration-none pt-2">
+                {{profile.user.username}} follows:
+            </h3>
+            <div class="text-center mb-2 border-bottom border-success">
+                <ul class="list-group m-2">
+                    {% for following in profile.follows.all %}
+                    <li class="list-group-item bg-muted bg-opacity-25 mb-1">
+                        <a class="text-decoration-none text-success" href="{% url 'profile' following.id %}">
+                            {{ following }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
             <div class="col" style="width: 100%;">
                 <h3 class="text-muted text-decoration-none" style="width: 100%;">
                     {{profile.user.username}} is followed by:
@@ -64,58 +79,39 @@
                 <div>
                     <ul class="list-group m-2">
                         {% for follower in profile.followed_by.all %}
-                        <li class="list-group-item bg-success bg-opacity-25 mb-1">
+                        <li class="list-group-item bg-muted bg-opacity-25 mb-1">
                             <a class="text-decoration-none text-success" href="{% url 'profile' follower.id%}">
                                 {{ follower }}
                             </a>
                         </li>
+                        <div class="container text-center mt-4 mb-4">
+                            <div class="row">
+                                <div class="col">
+
+                                </div>
+                                <div class="col">
+                                    <div class="block">
+                                        <div class="">
+                                            <a href="{%url 'profile_list'%}">
+                                                <button type="button" class="btn btn-secondary">All Profiles</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+
+                                </div>
+                            </div>
+                        </div>
                         {% endfor %}
                     </ul>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="col">
 
-        <div class="col">
-
-            <div class="card bg-white bg-opacity-75 mt-2 text-center float-end" style="width: 100%;">
-                <div class="card-body">
-
-                    {% for posts in profile.user.posts.all %}
-                    <h5 class="card-title mt-2 text-decoration-underline">{{profile.user.username }}</h5>
-                    <div class="card-body">
-                        <p class="card-text">{{ posts.body }}</p>
-                        <figcaption class="blockquote-footer">
-                            ({{ posts.created_at }})
-                        </figcaption>
-                        <a href="#" class="card-link btn btn-primary">Like</a>
-                        {% endfor %}
-                </div>
-            </div>
-
-        </div>
     </div>
 </div>
-
-<footer class="border-top border-muted">
-
-    <div class="container text-center mt-4">
-        <div class="row">
-            <div class="col">
-
-            </div>
-            <div class="col">
-                <div class="block">
-                    <div class="">
-                        <a href="{%url 'profile_list'%}">
-                            <button type="button" class="btn btn-secondary">All Profiles</button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-
-            </div>
-        </div>
-    </div>
-</footer>
+</div>
 {% endblock content %}
