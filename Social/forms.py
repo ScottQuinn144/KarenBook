@@ -7,6 +7,7 @@ class PostForm(forms.ModelForm):
         required=True,
         widget=forms.widgets.Textarea(
             attrs={
+                'rows':10, 'cols':30,
                 "placeholder": " What's on your mind?",
             }
         ),
