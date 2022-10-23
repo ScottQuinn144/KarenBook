@@ -45,5 +45,5 @@ def profile(request, pk):
 def delete(request, id):
     delete_post = Posts.objects.get(id=id)
     profile = request.user.profile
-    delete_post.delete() 
+    delete_post.delete()
     return render(request, "socials/profile.html", {"profile": profile})

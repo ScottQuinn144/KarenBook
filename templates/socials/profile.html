@@ -6,6 +6,7 @@
     <div class="row">
         <h1 class="title is-1 mb-3">
             {{profile.user.username}}
+        </h1>
             <form method="post" class="mb-3">
                 {% csrf_token %}
                 <div>
@@ -45,12 +46,12 @@
 
 
                     {% if posts.user.username == request.user.username %}
-                    
+
                     <a href="{% url 'delete' posts.id %}">
-                        <button>Delete</button>
+                        <button class="btn btn-danger opacity-75">Delete</button>
                     </a>
-                        
-                        {% endif %}
+
+                    {% endif %}
 
 
                 </div>
@@ -114,7 +115,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </ul>
                 </div>
             </div>
