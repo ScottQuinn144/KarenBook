@@ -42,3 +42,16 @@ class Posts(models.Model):
             f"({self.created_at: %Y-%m-%d }) : "
             f"{self.body[:30]}..."
         )
+
+
+class Comment(models.Model):
+    user = models.ForeignKey(
+        User, related_name="comment", on_delete=models.DO_NOTHING)
+    body = models.CharField(max_length=40)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_on"]
+
+        def __str__(self):
+            return f"Comment {self.body}"

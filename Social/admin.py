@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.models import User, Group
-from .models import Profile, Posts
+from .models import Profile, Posts, Comment
 
 
 class ProfileInline(admin.StackedInline):

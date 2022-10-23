@@ -1,5 +1,5 @@
 from django import forms
-from .models import Posts
+from .models import Posts, Comment
 
 
 class PostForm(forms.ModelForm):
@@ -7,7 +7,7 @@ class PostForm(forms.ModelForm):
         required=True,
         widget=forms.widgets.Textarea(
             attrs={
-                'rows':10, 'cols':30,
+                'rows':5, 'cols':30,
                 "placeholder": " What's on your mind?",
             }
         ),
@@ -17,3 +17,10 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Posts
         exclude = ("user", )
+
+
+class CommentForm(forms.ModelForm):
+    body = forms.CharField(label='')
+    class Meta:
+        model = Comment
+        fields = ('body',)
