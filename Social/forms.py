@@ -7,7 +7,7 @@ class PostForm(forms.ModelForm):
         required=True,
         widget=forms.widgets.Textarea(
             attrs={
-                'rows':5, 'cols':30,
+                'rows': 5, 'cols': 30,
                 "placeholder": " What's on your mind?",
             }
         ),
@@ -20,7 +20,8 @@ class PostForm(forms.ModelForm):
 
 
 class CommentForm(forms.ModelForm):
-    body = forms.CharField(label='')
+    body_comment = forms.CharField(label='')
+
     class Meta:
         model = Comment
-        fields = ('body',)
+        fields = ('body_comment',)

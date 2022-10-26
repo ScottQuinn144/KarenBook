@@ -7,15 +7,17 @@ from django.shortcuts import render, redirect
 def dashboard(request):
     form = PostForm(request.POST or None)
     comment_form = CommentForm(request.POST or None)
-    if comment_form.is_valid():
-        comments = comment_form.save(commit=False)
-        comments.user = request.user
-        comments.save()
-        return redirect("dashboard")
     if form.is_valid():
         post = form.save(commit=False)
         post.user = request.user
         post.save()
+        return redirect("dashboard")
+    if comment_form.is_valid():
+        comments = comment_form.save(commit=False)
+        print(comment_form)
+        print(comments)
+        comments.user = request.user
+        comments.save()
         return redirect("dashboard")
     context = {'form': form, 'comment_form': comment_form}
     return render(request, "dashboard.html", context)

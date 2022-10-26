@@ -37,12 +37,12 @@
                 <h5 class="card-title text-decoration-underline border-top p-3">{{ posts.user.username }}</h5>
                 <div class="card-body" style="width: 100%;">
                     <p class="card-text">{{ posts.body }}</p>
-                    <figcaption class="blockquote-footer" style="width: 100%;">
+                    <figcaption class="blockquote-footer border-bottom pb-2" style="width: 100%;">
                         ({{ posts.created_at }})
                     </figcaption>
 
 
-                    <h3>Comments:</h3>
+                    <h3 class="text-secondary h4 text-decoration-underline">Comments:</h3>
                     <div class="card-body">
 
                         {% for comment in comments.all %}
@@ -56,7 +56,7 @@
                         {% endfor %}
                     </div>
                     {% if user.is_authenticated %}
-                    <h3>Leave a comment:</h3>
+                    <h3 class="text-secondary h4 text-decoration-underline">Leave a comment:</h3>
                     <div class="text-center align-center" style="height: 100%;">
                         <form method="POST">
                             {% csrf_token %}

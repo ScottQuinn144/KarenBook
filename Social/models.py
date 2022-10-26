@@ -47,7 +47,7 @@ class Posts(models.Model):
 class Comment(models.Model):
     user = models.ForeignKey(
         User, related_name="comment", on_delete=models.DO_NOTHING)
-    body = models.CharField(max_length=40)
+    body_comment = models.CharField(max_length=40)
     created_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:
