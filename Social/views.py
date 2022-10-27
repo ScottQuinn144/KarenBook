@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Profile, Posts
 from .forms import PostForm, CommentForm
 from django.shortcuts import render, redirect
@@ -14,9 +14,9 @@ def dashboard(request):
         return redirect("dashboard")
     if comment_form.is_valid():
         comments = comment_form.save(commit=False)
-        print(comment_form)
-        print(comments)
+        comments.post = get_object_or_404(Posts)
         comments.user = request.user
+        print(comment_form)
         comments.save()
         return redirect("dashboard")
     context = {'form': form, 'comment_form': comment_form}
