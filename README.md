@@ -102,6 +102,9 @@ Then the logout page opens and is functional</li>
 
 <br>
 
+## ** Design **
+The design phase was created by the developer in his personal art studio. The colour schemes refect a softer tone to invite and welcome people to teh site. Clear and contrasting colours were chosen to maximize UI. Information is displayed as needed with no clutter to affect the UI. 
+
 ## **Deployment**
 
 Site deployment guide:
