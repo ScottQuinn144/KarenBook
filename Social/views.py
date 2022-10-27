@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Profile, Posts
 from .forms import PostForm, CommentForm
 from django.shortcuts import render, redirect
+from django.views.generic.edit import UpdateView
 
 
 def dashboard(request):
@@ -55,3 +56,16 @@ def delete(request, id):
     profile = request.user.profile
     delete_post.delete()
     return render(request, "socials/profile.html", {"profile": profile})
+
+
+def PostEdit(request, id):
+    form = PostForm(request.POST or None)
+    if form.is_valid():
+        post = Posts.objects.get(id=id)
+        post.delete()
+        form = form.save(commit=False)
+        form.user = request.user
+        form.save()
+        return redirect("dashboard")
+    context = {'form': form}
+    return render(request, "socials/edit.html", context)
