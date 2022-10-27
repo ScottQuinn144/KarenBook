@@ -34,6 +34,7 @@ def profile_list(request):
 
 
 def profile(request, pk):
+    comment_form = CommentForm(request.POST or None)
     if not hasattr(request.user, 'profile'):
         missing_profile = Profile(user=request.user)
         missing_profile.save()
