@@ -1,108 +1,141 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# **KarenBook**
+Welcome to Karenbook. This program is a basic social media site that allows users to voice unpopular opinions. 
+Everyone has there own profile and ability to post, edit or delete their posts as well as comment on others. 
+Following and unfollowing other profiles is allowed.
 
-Welcome ScottQuinn144,
+The live site to Battleships : [Click Here](https://karenbook.herokuapp.com/)
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+## **Aim**
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+#### User-
+- The User wants to be able to sign in, post and comment on material throughout the site. Not only can they do this they can also follow and unfollow profiles as well.
 
-## Gitpod Reminders
+#### Developer-
+- The main aim for the developer is to create a bug free program which allows users to enjoy a simple social media site while also providing scope to improve and add more complexity and functionality to the program in later iterations.
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+- The second aim is for the developer to showcase his python and django skills within the coding of this program. Using the BDD method of testing, the developer's aim in the first release is to create a program without bugs.
 
-`python3 -m http.server`
+## **Modals**
+- I have created 3 models to store information. They are Profile, Posts and Comment. Each is self explained but are connect to allow users to have a profile, post to the site and comment as well.
 
-A blue button should appear to click: _Make Public_,
+- In the future I would look at making this program with a TDD approach however with limited timing a BDD approach was prefered.
 
-Another blue button should appear to click: _Open Browser_.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+## **Features**
 
-A blue button should appear to click: _Make Public_,
+### Sign In / Sign Up capability
+- Using Django's built in User package, each user will have the ability to create there own account and 
+from that information, be able to log in and log out whenever they choose. Once the user profile is created, the automatically follow thier own profile
+ 
 
-Another blue button should appear to click: _Open Browser_.
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+### Posts
+- Each user will have the ability to add a post that automatically is added to the newsfeed of anyone who follows them. They will also have the ability to edit and delete posts that they have created
 
-To log into the Heroku toolbelt CLI:
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+### Comments
+- Each signed in user will have the ability to create posts on any post within the website.
 
-------
 
-## Release History
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+## **Future features**
+ In future iterations, users will be able to search for user's via a search bar in profile_list.html and also be able to upload a profile picture. 
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+## **Bugs**
+ I have manually tested the program
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+ - Data validation tested within GitPod's terminal
+ - Data validation tested in the deployed site on Heroku
+ - Passed the PEP8 online validator
+ - Step by step running through Python Tutor
+ 
+ Throughout the building of the program many small bugs came up. Those were:
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+ <ul>
+    <li> Unable to connect comments to posts </li>
+    <li> Unable to log in </li>
+    <li> Changing models so that old data was corrupted and page would not load </li>
+</ul>
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+## **Current Bugs**
+- There are no current bugs from a users perspective in this program when I tested it using the BDD method. 
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+## **Testing**
+Testing was completed by PEP8 online checker with no issues in python code.
+<br>
+I chose to go with BDD: behavior-driven development style of testing with this program. Results where positive
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+<ul>
+    <li> Given the user visited the site, 
+When the user clicked the signup button, 
+Then ensure the user can access the signup page</li>
+<br>
+    <li> Given the user wrote a post on the site, 
+When the user's followers go on thier Newsfeed the new post will appear,
+Then the post has been successfully added</li>
+<br>
+    <li> Given the user has a profile, 
+When the user clicks the profile button in the navbar,
+Then then the user's profile will appear</li>
+<br>
+    <li> Given the user wrote a post on the site, 
+When the user's clicks to edit the post,
+Then an edit page is produced and fuctional</li>
+<br>
+    <li> Given the user wrote a post on the site, 
+When the user clicks delete on a post,
+Then the post has been successfully deleted</li>
+<br>
+    <li> Given the user has a profile on the site, 
+When the user's clicks follow or unfollow on a profile,
+Then the profile will unfollow or follow updating the site in the process</li>
+<br>
+    <li> Given the user has a profile, 
+When the user's clicks logout,
+Then the logout page opens and is functional</li>
+</ul>
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+<br>
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+## **Deployment**
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+Site deployment guide:
+<ol>
+    <li>Log into Heroku Account</li>
+    <li>Create new heroku app</li>
+    <li>Add config vars</li>
+    <li>Link github repository to heroku app via deploy tab/deployment method</li>
+    <li>Enable Automatic deploy</li>
+</ol>
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+- My deployed site url: ['https://karenbook.herokuapp.com/'](https://karenbook.herokuapp.com/)
 
-------
+## **Credit to Libriraries and Programs**
+- Django
+- Python
+- Cloudinary ( for future iterations )
+- AllAuth
 
-## FAQ about the uptime script
+## **Credits**
+Code Institute
+- Code Institute -This project is a projection of the learning material learnt on Code Institute's learning platfom.
+- The template for this project
+- Project idea 
+- Tutor support for being helpful and understanding in the development phase of this projects
+<br>
 
-**Why have you added this script?**
+NTi Gymnasiet ( my workplace )
+Slack Overflow
+<br>
+Django and built in packages
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+## **Disclaimer**
 
-**How will this affect me?**
+This site was built for educational purposes only. All rights to the title name, KarenBook idea or others remain with the copyright owners. `Karenbook` is an educational project by the developer.
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
+Developer: Scott Quinn

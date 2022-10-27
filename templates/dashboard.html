@@ -41,14 +41,10 @@
                         ({{ posts.created_at }})
                     </figcaption>
                     {% if user.is_authenticated %}
-
-
-                    <div class="text-center align-center border-bottom" style="height: 100%;">
-                        
+                    <div class="text-center align-center border-bottom" style="height: 100%;">          
                         <a href="{% url 'comment' posts.id %}">
                             <button class="btn btn-secondary opacity-75 text-decoration-none mb-2">Comment Here</button>
-                        </a>
-                       
+                        </a>    
                     </div>
 
                     {% endif %}
@@ -67,19 +63,12 @@
                         </div>
                         {% endfor %}
                     </div>
-
-
-
-
                 </div>
                 <div class="bg-success bg-opacity-25" style="width: 100%;">
                     <br>
                 </div>
                 {% endfor %}
                 {% endfor %}
-
-
-
             </div>
             <div class="col">
 

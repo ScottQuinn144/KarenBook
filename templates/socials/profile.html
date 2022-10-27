@@ -26,14 +26,10 @@
         </h1>
     </div>
 </div>
-
 <div class="container text-center mt-4">
     <div class="col">
-
     </div>
-
     <div class="col">
-
         <div class="card bg-white bg-opacity-75 mt-2 text-center float-end" style="width: 100%;">
             <div class="card-body">
                 {% for posts in profile.user.posts.all %}
@@ -45,12 +41,11 @@
                     </figcaption>
 
                     {% if user.is_authenticated %}
-                   
+
                     <div class="text-center align-center border-bottom" style="height: 100%;">
                         <a href="{% url 'comment' posts.id %}">
                             <button class="mb-2 btn btn-secondary opacity-75 text-decoration-none">Comment Here</button>
                         </a>
-                          
                     </div>
                     {% endif %}
 
@@ -68,17 +63,14 @@
                         {% endfor %}
                     </div>
 
-
                     {% if posts.user.username == request.user.username %}
-
 
                     <div class="container text-center">
                         <div class="row">
                             <div class="col">
-                                
                             </div>
                             <div class="col">
-                                <div> 
+                                <div>
                                     <a href="{% url 'delete' posts.id %}">
                                         <button
                                             class="btn btn-danger opacity-75 mb-2 text-decoration-none">Delete</button>
@@ -89,12 +81,9 @@
                                 </a>
                             </div>
                             <div class="col">
-                                
                             </div>
                         </div>
                     </div>
-
-
 
                     {% endif %}
 
@@ -109,9 +98,7 @@
         </div>
         <div class="container text-center"></div>
         <div class="col">
-
         </div>
-
         <div class="border-top bg-secondary bg-opacity-50 pt-4">
             <h3 class="text-muted text-decoration-none pt-2">
                 {{profile.user.username}} follows:
@@ -127,7 +114,6 @@
                     {% endfor %}
                 </ul>
             </div>
-
             <div class="col" style="width: 100%;">
                 <h3 class="text-muted text-decoration-none" style="width: 100%;">
                     {{profile.user.username}} is followed by:
@@ -144,7 +130,6 @@
                         <div class="container text-center mt-4 mb-4">
                             <div class="row">
                                 <div class="col">
-
                                 </div>
                                 <div class="col">
                                     <div class="block">
@@ -156,18 +141,15 @@
                                     </div>
                                 </div>
                                 <div class="col">
-
                                 </div>
                             </div>
                         </div>
-
                     </ul>
                 </div>
             </div>
         </div>
     </div>
     <div class="col">
-
     </div>
 </div>
 </div>
