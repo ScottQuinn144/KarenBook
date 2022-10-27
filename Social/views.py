@@ -1,26 +1,31 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Profile, Posts
+from .models import Profile, Posts, Comment
 from .forms import PostForm, CommentForm
 from django.shortcuts import render, redirect
 from django.views.generic.edit import UpdateView
 
 
+def commenting(request, id):
+    comment_form = CommentForm(request.POST or None)
+    if comment_form.is_valid():
+        comments = comment_form.save(commit=False)
+        comments.post = Posts.objects.get(id=id)
+        comments.user = request.user
+        print(comment_form)
+        comments.save()
+        return redirect("dashboard")
+    context = {'comment_form': comment_form}
+    return render(request, "socials/comment.html", context)
+
+
 def dashboard(request):
     form = PostForm(request.POST or None)
-    comment_form = CommentForm(request.POST or None)
     if form.is_valid():
         post = form.save(commit=False)
         post.user = request.user
         post.save()
         return redirect("dashboard")
-    if comment_form.is_valid():
-        comments = comment_form.save(commit=False)
-        comments.post = get_object_or_404(Posts)
-        comments.user = request.user
-        print(comment_form)
-        comments.save()
-        return redirect("dashboard")
-    context = {'form': form, 'comment_form': comment_form}
+    context = {'form': form}
     return render(request, "dashboard.html", context)
 
 

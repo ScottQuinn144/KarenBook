@@ -37,17 +37,29 @@
                 <h5 class="card-title text-decoration-underline border-top p-3">{{ posts.user.username }}</h5>
                 <div class="card-body" style="width: 100%;">
                     <p class="card-text">{{ posts.body }}</p>
-                    <figcaption class="blockquote-footer border-bottom pb-2" style="width: 100%;">
+                    <figcaption class="blockquote-footer pb-2" style="width: 100%;">
                         ({{ posts.created_at }})
                     </figcaption>
+                    {% if user.is_authenticated %}
 
 
-                    <h3 class="text-secondary h4 text-decoration-underline">Comments:</h3>
+                    <div class="text-center align-center border-bottom" style="height: 100%;">
+                        
+                        <a href="{% url 'comment' posts.id %}">
+                            <button class="btn btn-secondary opacity-75 text-decoration-none mb-2">Comment Here</button>
+                        </a>
+                       
+                    </div>
+
+                    {% endif %}
+
+
+                    <h3 class="text-secondary h4 text-decoration-underline mt-2">Comments:</h3>
                     <div class="card-body">
 
-                        {% for comment in comments %}
+                        {% for comment in posts.comments.all %}
                         <div class="comments" style="padding: 10px;">
-                            <p>{{ comment.body_comment }} - {{ user.username }}
+                            <p>{{ comment.body_comment }} - {{ comment.user.username }}
                                 <span class=" text-muted font-weight-normal">
                                     {{ comment.created_on }}
                                 </span>
@@ -56,17 +68,7 @@
                         {% endfor %}
                     </div>
 
-                    {% if user.is_authenticated %}
-                    <h3 class="text-secondary h4 text-decoration-underline">Leave a comment:</h3>
-                    <div class="text-center align-center" style="height: 100%;">
-                        <form method="POST">
-                            {% csrf_token %}
-                            {{ comment_form }}
-                            <button class="btn btn-secondary" type="submit">Post
-                            </button>
-                        </form>
-                    </div>
-                    {% endif %}
+
 
 
                 </div>

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import dashboard, profile_list, profile, index, delete, PostEdit
+from .views import dashboard, profile_list, profile, index, delete, PostEdit, commenting
 
 
 urlpatterns = [
@@ -9,4 +9,5 @@ urlpatterns = [
     path("profile/<int:pk>", profile, name="profile"),
     path("delete/<int:id>", delete, name='delete'),
     path('edit/<int:id>', PostEdit, name='edit'),
+    path('comment/<int:id>', commenting, name='comment'),
 ]
